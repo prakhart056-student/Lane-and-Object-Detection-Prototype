@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+data/raw/*.csv
+data/raw/*.log
+data/raw/archive_5min/
+data/processed/
+rc_car/logs/
+rc_car/calibration.json

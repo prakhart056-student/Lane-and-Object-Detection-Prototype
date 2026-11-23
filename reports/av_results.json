@@ -1,0 +1,147 @@
+{
+  "n_runs": 30,
+  "seed": 7,
+  "results": {
+    "highway_cut_in": {
+      "Reactive baseline": {
+        "runs": 30,
+        "collision_rate": 0.0,
+        "red_light_violations": 0,
+        "lane_changes_per_run": 1.2666666666666666,
+        "aborts": 0,
+        "rms_lateral_error_m": 0.0382830415470268,
+        "max_lateral_error_m": 0.11526171510344918,
+        "max_lat_accel": 1.1808801490329555,
+        "median_min_ttc_s": 3.681036073583175,
+        "mean_speed_kmh": 90.57923942643329,
+        "min_ped_clearance_m": null
+      },
+      "Risk-aware (ours)": {
+        "runs": 30,
+        "collision_rate": 0.0,
+        "red_light_violations": 0,
+        "lane_changes_per_run": 1.2333333333333334,
+        "aborts": 1,
+        "rms_lateral_error_m": 0.03815469722898254,
+        "max_lateral_error_m": 0.11525873367253903,
+        "max_lat_accel": 1.1809572534245343,
+        "median_min_ttc_s": 3.6810362496467173,
+        "mean_speed_kmh": 90.54769755754893,
+        "min_ped_clearance_m": null
+      }
+    },
+    "highway_emergency": {
+      "Reactive baseline": {
+        "runs": 30,
+        "collision_rate": 0.4666666666666667,
+        "red_light_violations": 0,
+        "lane_changes_per_run": 0.26666666666666666,
+        "aborts": 1,
+        "rms_lateral_error_m": 0.019453325484228644,
+        "max_lateral_error_m": 0.06021916333781493,
+        "max_lat_accel": 1.9959282730871941,
+        "median_min_ttc_s": 0.012040235049923846,
+        "mean_speed_kmh": 63.668057074420716,
+        "min_ped_clearance_m": null
+      },
+      "Risk-aware (ours)": {
+        "runs": 30,
+        "collision_rate": 0.0,
+        "red_light_violations": 0,
+        "lane_changes_per_run": 0.2,
+        "aborts": 2,
+        "rms_lateral_error_m": 0.018777547927412517,
+        "max_lateral_error_m": 0.06021915849691486,
+        "max_lat_accel": 1.9950369315506442,
+        "median_min_ttc_s": 0.6107030436441647,
+        "mean_speed_kmh": 47.49929444044969,
+        "min_ped_clearance_m": null
+      }
+    },
+    "highway_overtake": {
+      "Reactive baseline": {
+        "runs": 30,
+        "collision_rate": 0.0,
+        "red_light_violations": 0,
+        "lane_changes_per_run": 2.8666666666666667,
+        "aborts": 2,
+        "rms_lateral_error_m": 0.045440581504544136,
+        "max_lateral_error_m": 0.19583356220915357,
+        "max_lat_accel": 2.439378195994438,
+        "median_min_ttc_s": 16.151422618763394,
+        "mean_speed_kmh": 101.3820539871455,
+        "min_ped_clearance_m": null
+      },
+      "Risk-aware (ours)": {
+        "runs": 30,
+        "collision_rate": 0.0,
+        "red_light_violations": 0,
+        "lane_changes_per_run": 2.8666666666666667,
+        "aborts": 2,
+        "rms_lateral_error_m": 0.04544351192881475,
+        "max_lateral_error_m": 0.19584987217447558,
+        "max_lat_accel": 2.439363000997513,
+        "median_min_ttc_s": 16.151422692200168,
+        "mean_speed_kmh": 101.38064852002012,
+        "min_ped_clearance_m": null
+      }
+    },
+    "rc_track": {
+      "Reactive baseline": {
+        "runs": 30,
+        "collision_rate": 0.0,
+        "red_light_violations": 0,
+        "lane_changes_per_run": 0.0,
+        "aborts": 0,
+        "rms_lateral_error_m": 0.01837395022091982,
+        "max_lateral_error_m": 0.07801054549881625,
+        "max_lat_accel": 0.8246962078716482,
+        "median_min_ttc_s": 1.1597657684214444,
+        "mean_speed_kmh": 1.744077605715892,
+        "min_ped_clearance_m": null
+      },
+      "Risk-aware (ours)": {
+        "runs": 30,
+        "collision_rate": 0.0,
+        "red_light_violations": 0,
+        "lane_changes_per_run": 0.0,
+        "aborts": 0,
+        "rms_lateral_error_m": 0.01837395022091982,
+        "max_lateral_error_m": 0.07801054549881625,
+        "max_lat_accel": 0.8246962078716482,
+        "median_min_ttc_s": 1.1597657684214444,
+        "mean_speed_kmh": 1.744077605715892,
+        "min_ped_clearance_m": null
+      }
+    },
+    "urban_route": {
+      "Reactive baseline": {
+        "runs": 30,
+        "collision_rate": 0.0,
+        "red_light_violations": 0,
+        "lane_changes_per_run": 0.0,
+        "aborts": 0,
+        "rms_lateral_error_m": 0.06403697077600008,
+        "max_lateral_error_m": 0.2499362978668096,
+        "max_lat_accel": 2.3864047315519574,
+        "median_min_ttc_s": 20.0,
+        "mean_speed_kmh": 27.938871661556355,
+        "min_ped_clearance_m": 2.684538703731084
+      },
+      "Risk-aware (ours)": {
+        "runs": 30,
+        "collision_rate": 0.0,
+        "red_light_violations": 0,
+        "lane_changes_per_run": 0.0,
+        "aborts": 0,
+        "rms_lateral_error_m": 0.06403565502872313,
+        "max_lateral_error_m": 0.24993626150491544,
+        "max_lat_accel": 2.4141627493930793,
+        "median_min_ttc_s": 20.0,
+        "mean_speed_kmh": 27.724745434356116,
+        "min_ped_clearance_m": 2.9228426042633737
+      }
+    }
+  },
+  "runtime_s": 54.31534290313721
+}

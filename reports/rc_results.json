@@ -1,0 +1,79 @@
+{
+  "empty": {
+    "scenario": "Lane following only",
+    "distance_m": 35.515986689158446,
+    "rms_lateral_cm": 4.123031626806882,
+    "max_lateral_cm": 7.490781051742994,
+    "collisions": 0,
+    "closest_cm": null,
+    "states": {
+      "CRUISE": 45.0
+    }
+  },
+  "follow": {
+    "scenario": "Following a car that brakes",
+    "distance_m": 19.244973048550403,
+    "rms_lateral_cm": 4.523115925984237,
+    "max_lateral_cm": 7.712693929517596,
+    "collisions": 0,
+    "closest_cm": 16.65333245531686,
+    "states": {
+      "CRUISE": 18.6,
+      "FOLLOW": 26.0,
+      "WARNING": 0.3
+    }
+  },
+  "obstacle": {
+    "scenario": "Stationary box ahead",
+    "distance_m": 24.933379000129626,
+    "rms_lateral_cm": 3.634342241989539,
+    "max_lateral_cm": 7.471004313007604,
+    "collisions": 0,
+    "closest_cm": 25.8021432483849,
+    "states": {
+      "CRUISE": 30.8,
+      "WARNING": 2.9,
+      "FOLLOW": 11.3
+    }
+  },
+  "stopline": {
+    "scenario": "Stop line (stop, wait, go)",
+    "distance_m": 27.042351557521354,
+    "rms_lateral_cm": 3.6455899198693937,
+    "max_lateral_cm": 7.460433674894428,
+    "collisions": 0,
+    "closest_cm": null,
+    "states": {
+      "CRUISE": 30.1,
+      "STOP_SIGN": 14.8
+    }
+  },
+  "light": {
+    "scenario": "Traffic light (red / green)",
+    "distance_m": 32.24603307300927,
+    "rms_lateral_cm": 4.063396177746386,
+    "max_lateral_cm": 7.480053612900921,
+    "collisions": 0,
+    "closest_cm": null,
+    "states": {
+      "CRUISE": 38.1,
+      "STOP_SIGN": 1.1,
+      "STOP_RED": 5.8
+    }
+  },
+  "full": {
+    "scenario": "All combined",
+    "distance_m": 24.88662654227612,
+    "rms_lateral_cm": 3.768707052036604,
+    "max_lateral_cm": 7.558086008563988,
+    "collisions": 0,
+    "closest_cm": 15.874158857958331,
+    "states": {
+      "CRUISE": 29.4,
+      "FOLLOW": 9.3,
+      "STOP_RED": 1.4,
+      "WARNING": 4.5,
+      "STOP_SIGN": 0.3
+    }
+  }
+}

@@ -1,0 +1,104 @@
+
+======================================================================
+2/7  Preprocess trajectories and compute surrogate safety measures  (t+0s)
+======================================================================
+[us-101] vehicles=2,147 records=1,088,038 pairs=1,024,194 episodes=4,410
+[i-80] vehicles=1,968 records=1,132,850 pairs=854,900 episodes=3,354
+
+======================================================================
+3/7  Train and evaluate risk-prediction models  (t+9s)
+======================================================================
+us-101: 168,221 samples, positive rate 0.033
+i-80: 139,853 samples, positive rate 0.077
+Logistic Regression [onboard]            AUC=0.900 PR-AUC=0.390 | I-80 AUC=0.804 (0.3s)
+Random Forest [onboard]                  AUC=0.902 PR-AUC=0.389 | I-80 AUC=0.804 (12.7s)
+MLP Neural Network [onboard]             AUC=0.904 PR-AUC=0.406 | I-80 AUC=0.804 (4.1s)
+Gradient Boosting [onboard]              AUC=0.904 PR-AUC=0.387 | I-80 AUC=0.805 (1.6s)
+Logistic Regression [context]            AUC=0.902 PR-AUC=0.386 | I-80 AUC=0.812 (0.4s)
+Random Forest [context]                  AUC=0.905 PR-AUC=0.391 | I-80 AUC=0.809 (11.4s)
+MLP Neural Network [context]             AUC=0.903 PR-AUC=0.387 | I-80 AUC=0.794 (8.7s)
+Gradient Boosting [context]              AUC=0.903 PR-AUC=0.370 | I-80 AUC=0.792 (5.2s)
+Selected onboard model: MLP Neural Network [onboard] (val PR-AUC 0.422)
+Done in 57s
+
+======================================================================
+4/7  Closed-loop collision-avoidance simulation  (t+67s)
+======================================================================
+Lead emergency braking   ACC (IDM)          collisions= 67.8% minTTC(med)= 0.07s TET= 2.91s maxDecel=3.50
+Lead emergency braking   Reactive AEB       collisions= 18.2% minTTC(med)= 0.74s TET= 2.98s maxDecel=6.83
+Lead emergency braking   Risk-Aware (ours)  collisions=  0.8% minTTC(med)= 1.74s TET= 2.11s maxDecel=5.37
+Aggressive cut-in        ACC (IDM)          collisions=  9.4% minTTC(med)= 2.97s TET= 0.74s maxDecel=3.50
+Aggressive cut-in        Reactive AEB       collisions=  0.2% minTTC(med)= 2.97s TET= 0.69s maxDecel=4.06
+Aggressive cut-in        Risk-Aware (ours)  collisions=  0.2% minTTC(med)= 2.97s TET= 0.46s maxDecel=4.50
+Stop-and-go wave         ACC (IDM)          collisions=  0.0% minTTC(med)= 6.23s TET= 0.03s maxDecel=2.62
+Stop-and-go wave         Reactive AEB       collisions=  0.0% minTTC(med)= 6.23s TET= 0.03s maxDecel=2.62
+Stop-and-go wave         Risk-Aware (ours)  collisions=  0.0% minTTC(med)= 6.41s TET= 0.00s maxDecel=2.80
+Stopped traffic ahead    ACC (IDM)          collisions= 28.6% minTTC(med)= 2.12s TET= 5.09s maxDecel=3.24
+Stopped traffic ahead    Reactive AEB       collisions= 19.4% minTTC(med)= 2.12s TET= 5.15s maxDecel=4.55
+Stopped traffic ahead    Risk-Aware (ours)  collisions=  9.2% minTTC(med)= 3.23s TET= 1.17s maxDecel=4.96
+NGSIM I-80 replay        ACC (IDM)          collisions=  0.0% minTTC(med)= 2.31s TET= 0.59s maxDecel=3.09
+NGSIM I-80 replay        Reactive AEB       collisions=  0.0% minTTC(med)= 2.31s TET= 0.59s maxDecel=3.18
+NGSIM I-80 replay        Risk-Aware (ours)  collisions=  0.0% minTTC(med)= 3.35s TET= 0.12s maxDecel=4.31
+NGSIM I-80 replay        Human (replay)     minTTC(med)= 1.93s TET= 0.98s
+
+======================================================================
+5/7  Figures  (t+71s)
+======================================================================
+Generating figures ...
+  saved fig01_architecture.png
+  saved fig02_time_space_risk.png
+  saved fig03_ssm_distributions.png
+  saved fig04_roc_pr_curves.png
+  saved fig05_model_comparison.png
+  saved fig06_feature_importance.png
+  saved fig07_anticipation_recall.png
+  saved fig08_calibration.png
+  saved fig09_scenario_example.png
+  saved fig10_controller_safety.png
+  saved fig11_comfort_efficiency.png
+  saved fig12_replay_vs_human.png
+
+======================================================================
+6/7  Level-2 driving (steering, lane changes, lights, pedestrians) and RC-car evaluation  (t+77s)
+======================================================================
+  highway_overtake     Risk-aware (ours): coll    0%  |  Reactive baseline: coll    0%   (14s)
+  highway_cut_in       Risk-aware (ours): coll    0%  |  Reactive baseline: coll    0%   (21s)
+  highway_emergency    Risk-aware (ours): coll    0%  |  Reactive baseline: coll   47%   (28s)
+  urban_route          Risk-aware (ours): coll    0%  |  Reactive baseline: coll    0%   (40s)
+  rc_track             Risk-aware (ours): coll    0%  |  Reactive baseline: coll    0%   (46s)
+
+> Highway: overtake slow truck [risk-aware, canonical scenario]  simulated 75 s in 0.3 s
+   no collision | lane changes 4 | red-light violations 0 | lane-keeping RMS 5 cm | mean 101 km/h
+     t= 10.7s  Overtaking: left lane change (gap safe, risk 0.18)
+     t= 14.8s  Lane change complete: now in lane 2
+     t= 17.8s  Overtaking: left lane change (gap safe, risk 0.00)
+     t= 21.8s  Lane change complete: now in lane 3
+     t= 58.9s  Right lane change rejected: car behind 7 m closing at 0.0 m/s (TTC 20.0 s)
+     t= 59.8s  Returning: right lane change (gap safe, risk 0.19)
+     t= 63.8s  Lane change complete: now in lane 2
+     t= 66.8s  Returning: right lane change (gap safe, risk 0.00)
+     t= 70.9s  Lane change complete: now in lane 1
+
+> Urban: turns, traffic light, pedestrian [risk-aware, canonical scenario]  simulated 78 s in 0.4 s
+   no collision | lane changes 0 | red-light violations 0 | lane-keeping RMS 6 cm | mean 27 km/h
+     t= 40.1s  Yield: Pedestrian
+
+> Highway: sudden stop ahead [risk-aware, canonical scenario]  simulated 25 s in 0.2 s
+   no collision | lane changes 0 | red-light violations 0 | lane-keeping RMS 2 cm | mean 45 km/h
+     t=  9.3s  Overtaking: left lane change (gap safe, risk 0.12)
+     t= 11.8s  Aeb: Partial Brake
+     t= 11.9s  Emergency Brake
+saved .\reports\figures\fig14_av_scenarios.png
+  Lane following only            collisions 0  lane RMS 4.1 cm  closest - cm
+  Following a car that brakes    collisions 0  lane RMS 4.5 cm  closest 16.65333245531686 cm
+  Stationary box ahead           collisions 0  lane RMS 3.6 cm  closest 25.80214324838508 cm
+  Stop line (stop, wait, go)     collisions 0  lane RMS 3.6 cm  closest - cm
+  Traffic light (red / green)    collisions 0  lane RMS 4.1 cm  closest - cm
+  All combined                   collisions 0  lane RMS 3.8 cm  closest 15.874158857958331 cm
+
+======================================================================
+7/7  Report  (t+149s)
+======================================================================
+  saved .\reports\Project_Report.docx
+
+Finished in 150s. See reports/.
